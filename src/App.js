@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Wallet from './component/wallet/Wallet';
+import Dashboard from './component/dashboard/Dashboard';
+import Auth from './component/auth/Auth';
+import Loans from './component/loans/Loans';
+import NavSide from './component/nav/NavSide';
+import Tables from './component/tables/Tables';
+import Billing from './component/billing/Billing';
+import { UserProvider } from './component/context/UserProvider';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <UserProvider>
+        <div className="flex">
+          <NavSide />
+            <div className="grow">
+              <Routes>
+                <Route path='/' element={ <Dashboard /> } />
+                <Route path='/wallet' element={ <Wallet /> } />
+                <Route path='/loans' element={ <Loans /> } />
+                <Route path='/tables' element={ <Tables /> } />
+                <Route path='/billing' element={ <Billing /> } />
+                <Route path='/auth' element={ <Auth /> } />
+              </Routes>
+            </div>
+        </div>
+      </UserProvider>
+    </BrowserRouter>
   );
 }
 
