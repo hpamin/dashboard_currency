@@ -2,6 +2,8 @@ import React from 'react'
 import { FaLongArrowAltUp } from 'react-icons/fa'
 
 const BoxPrice = () => {
+
+  
     const boxApi = [ 
     {
       id: 0,
